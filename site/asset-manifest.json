@@ -1,0 +1,68 @@
+[
+  {
+    "id": "collect_sound",
+    "url": "https://dzmv1mxivz48k.cloudfront.net/images/Google_115298327582608514912/1777281021110_01KQ738D5P2GTTE6AR7J18X9F0.buttonpop.mp3",
+    "localPath": "assets/collect_sound.mp3",
+    "filename": "collect_sound.mp3"
+  },
+  {
+    "id": "sell_sound",
+    "url": "https://d2oir5eh8rty2e.cloudfront.net/assets/sounds/effect/sell_sound_37bf31c3-5807-42d3-a4b7-0e1e4cb449e4.mp3",
+    "localPath": "assets/sell_sound.mp3",
+    "filename": "sell_sound.mp3"
+  },
+  {
+    "id": "upgrade_sound",
+    "url": "https://d2oir5eh8rty2e.cloudfront.net/assets/sounds/effect/upgrade_sound_a3b287cd-3c9a-4794-9526-ecf9671064a8.mp3",
+    "localPath": "assets/upgrade_sound.mp3",
+    "filename": "upgrade_sound.mp3"
+  },
+  {
+    "id": "background_music",
+    "url": "https://d2oir5eh8rty2e.cloudfront.net/assets/sounds/music/background_music_9afaa9ec-97bf-4bb4-8c33-f4bd8864956f.mp3",
+    "localPath": "assets/background_music.mp3",
+    "filename": "background_music.mp3"
+  },
+  {
+    "id": "floor_tile",
+    "url": "https://d2oir5eh8rty2e.cloudfront.net/assets/images/floor_tile_7c0aa055-fc1b-4a29-85c2-4a1ba6cdfd6a.webp",
+    "localPath": "assets/floor_tile.webp",
+    "filename": "floor_tile.webp"
+  },
+  {
+    "id": "wall_tile",
+    "url": "https://d2oir5eh8rty2e.cloudfront.net/assets/images/wall_tile_359c7012-9c53-44a6-9905-7943c4ae8fdf.webp",
+    "localPath": "assets/wall_tile.webp",
+    "filename": "wall_tile.webp"
+  },
+  {
+    "id": "kitchen_floor_tile",
+    "url": "https://d2oir5eh8rty2e.cloudfront.net/assets/images/kitchen_floor_tile_f9ac39b6-a640-4f5f-9018-fef9abfddd04.webp",
+    "localPath": "assets/kitchen_floor_tile.webp",
+    "filename": "kitchen_floor_tile.webp"
+  },
+  {
+    "id": "paper_money",
+    "url": "https://d2oir5eh8rty2e.cloudfront.net/assets/images/paper_money_94e2dcea-fec2-4fc7-8aac-641a7f498e65.webp",
+    "localPath": "assets/paper_money.webp",
+    "filename": "paper_money.webp"
+  },
+  {
+    "id": "coin_icon",
+    "url": "https://d2oir5eh8rty2e.cloudfront.net/assets/images/coin_icon_c6b3132a-feba-4279-8fe0-7d5573092daa.webp",
+    "localPath": "assets/coin_icon.webp",
+    "filename": "coin_icon.webp"
+  },
+  {
+    "id": "pickup_sound",
+    "url": "https://dzmv1mxivz48k.cloudfront.net/images/Google_115298327582608514912/1777282180131_01KQ74BS13DFC3NBNEKVA6QNCX.qewqe.mp3",
+    "localPath": "assets/pickup_sound.mp3",
+    "filename": "pickup_sound.mp3"
+  },
+  {
+    "id": "stickman-animated_compressed.glb",
+    "url": "https://dzmv1mxivz48k.cloudfront.net/images/Google_115298327582608514912/1778797075662_01KRM92Q6EVR1PWDCCRAZ78PCY.stickman-animated_compressed.glb",
+    "localPath": "assets/stickman-animated_compressed.glb.glb",
+    "filename": "stickman-animated_compressed.glb.glb"
+  }
+]
