@@ -114,37 +114,37 @@
   "upgrades": {
     "capacity": {
       "level": 0,
-      "baseCost": 50,
+      "baseCost": 120,
       "costMultiplier": 1.5,
       "bonusPerLevel": 5
     },
     "speed": {
       "level": 0,
-      "baseCost": 75,
+      "baseCost": 150,
       "costMultiplier": 1.6,
       "bonusPerLevel": 2
     },
     "collection": {
       "level": 0,
-      "baseCost": 100,
+      "baseCost": 180,
       "costMultiplier": 1.7,
       "reductionPerLevel": 0.15
     }
   },
-  "currency": 9500,
+  "currency": 0,
   "settings": {
     "groundColor": "#D4A574",
     "skyColor": "#FFF5E6",
     "musicEnabled": true,
     "customersLeaveTrash": true,
     "autosaveEnabled": true,
-    "defaultTableCost": 50,
+    "defaultTableCost": 120,
     "paperMoneyValue": 10,
     "vacuumSpeed": 0,
     "diningFloorAsset": "floor_tile",
     "kitchenFloorAsset": "kitchen_floor_tile",
     "outdoorFloorColor": "#4d4e46",
-    "startingCash": 500,
+    "startingCash": 520,
     "collectSoundPitchVariance": 0.1,
     "bugFix": false,
     "maxTotalCustomers": 40
@@ -156,9 +156,9 @@
     "depth": 4,
     "maxBurgers": 100,
     "maxMoney": 100,
-    "serveTime": 0.8,
-    "customerSpawnRate": 3.25,
-    "maxCustomers": 6,
+    "serveTime": 1,
+    "customerSpawnRate": 4,
+    "maxCustomers": 5,
     "color": "#8B4513"
   },
   "staffHireTile": {
@@ -166,11 +166,11 @@
     "z": -15,
     "width": 4,
     "depth": 4,
-    "hireCost": 100,
+    "hireCost": 400,
     "color": "#9B59B6",
     "staffHired": false,
     "moneyDeposited": 0,
-    "cost": 100
+    "cost": 400
   },
   "diningTables": [],
   "diningTableTile": "__DELETE__",
@@ -179,89 +179,89 @@
       "width": 4,
       "x": -15.016490604550816,
       "z": 16.133036187743055,
-      "tableCost": 100,
+      "tableCost": 120,
       "depth": 4,
       "moneyDeposited": 0,
       "color": "#3498DB",
       "deleted": false,
-      "cost": 100
+      "cost": 120
     },
     {
       "width": 4,
       "x": -15.14183591719429,
       "z": 23.898387879930507,
-      "tableCost": 100,
+      "tableCost": 120,
       "depth": 4,
       "moneyDeposited": 0,
       "color": "#3498DB",
       "deleted": false,
-      "cost": 100
+      "cost": 120
     },
     {
       "width": 4,
       "x": 6.132096347865142,
       "z": 16.127572994534983,
-      "tableCost": 100,
+      "tableCost": 120,
       "depth": 4,
       "moneyDeposited": 0,
       "color": "#3498DB",
       "deleted": false,
-      "cost": 100
+      "cost": 120
     },
     {
       "width": 4,
       "x": -8.667152265934797,
       "z": 23.31763681926224,
-      "tableCost": 100,
+      "tableCost": 120,
       "depth": 4,
       "moneyDeposited": 0,
       "color": "#3498DB",
       "deleted": false,
-      "cost": 100
+      "cost": 120
     },
     {
       "width": 4,
       "x": -8.545166447414058,
       "z": 16.01429074427949,
-      "tableCost": 100,
+      "tableCost": 120,
       "depth": 4,
       "moneyDeposited": 0,
       "color": "#3498DB",
       "deleted": false,
-      "cost": 100
+      "cost": 120
     },
     {
       "width": 4,
       "x": 5.955364751646173,
       "z": 22.87584780489358,
-      "tableCost": 100,
+      "tableCost": 120,
       "depth": 4,
       "moneyDeposited": 0,
       "color": "#3498DB",
       "deleted": false,
-      "cost": 100
+      "cost": 120
     },
     {
       "width": 4,
       "x": 11.896793010569025,
       "z": 16.391015807013854,
-      "tableCost": 100,
+      "tableCost": 120,
       "depth": 4,
       "moneyDeposited": 0,
       "color": "#3498DB",
       "deleted": false,
-      "cost": 100
+      "cost": 120
     },
     {
       "width": 4,
       "x": 11.994271840852896,
       "z": 22.772683039660294,
-      "tableCost": 100,
+      "tableCost": 120,
       "depth": 4,
       "moneyDeposited": 0,
       "color": "#3498DB",
       "deleted": false,
-      "cost": 100
+      "cost": 120
     }
   ],
   "trashBin": {
@@ -275,41 +275,41 @@
     "z": 21,
     "width": 4,
     "depth": 4,
-    "hireCost": 150,
+    "hireCost": 500,
     "color": "#3498DB",
     "staffHired": false,
     "moneyDeposited": 0,
-    "cost": 150
+    "cost": 500
   },
   "runnerStaffTile": {
     "color": "#E67E22",
     "depth": 4,
-    "hireCost": 300,
+    "hireCost": 800,
     "moneyDeposited": 0,
     "staffHired": false,
     "width": 4,
     "x": -5,
     "z": -15,
-    "cost": 300
+    "cost": 800
   },
   "vipCustomers": {
-    "spawnChance": 0.15,
-    "tipMultiplier": 3,
+    "spawnChance": 0.05,
+    "tipMultiplier": 2,
     "color": "#FFD700"
   },
   "rushHour": {
     "enabled": true,
-    "duration": 30,
-    "cooldown": 60,
-    "spawnMultiplier": 2.5,
-    "tipBonus": 1.5
+    "duration": 25,
+    "cooldown": 150,
+    "spawnMultiplier": 1.8,
+    "tipBonus": 1.2
   },
   "menuItems": [
     {
       "id": "burger",
       "name": "汉堡",
       "emoji": "🍔",
-      "value": 100,
+      "value": 50,
       "bunColor": "#DEB887",
       "pattyColor": "#8B4513",
       "toppingColor": "#32CD32",
@@ -320,7 +320,7 @@
       "id": "bigmac",
       "name": "巨无霸",
       "emoji": "🍔",
-      "value": 150,
+      "value": 80,
       "bunColor": "#DEB887",
       "pattyColor": "#8B4513",
       "toppingColor": "#32CD32",
@@ -331,7 +331,7 @@
       "id": "mcchicken",
       "name": "鸡肉堡",
       "emoji": "🍗",
-      "value": 120,
+      "value": 70,
       "bunColor": "#F5DEB3",
       "pattyColor": "#D4A574",
       "toppingColor": "#90EE90",
@@ -342,7 +342,7 @@
       "id": "fries",
       "name": "薯条",
       "emoji": "🍟",
-      "value": 60,
+      "value": 30,
       "bunColor": "#FFD700",
       "pattyColor": "#DAA520",
       "toppingColor": "#FF0000",
@@ -353,7 +353,7 @@
       "id": "nuggets",
       "name": "鸡块",
       "emoji": "🍗",
-      "value": 80,
+      "value": 40,
       "bunColor": "#DEB887",
       "pattyColor": "#D4A574",
       "toppingColor": "#FFD700",
@@ -364,7 +364,7 @@
       "id": "drink",
       "name": "饮料",
       "emoji": "🥤",
-      "value": 40,
+      "value": 20,
       "bunColor": "#FFFFFF",
       "pattyColor": "#E74C3C",
       "toppingColor": "#FFFFFF",
@@ -375,7 +375,7 @@
       "id": "mcflurry",
       "name": "冰淇淋",
       "emoji": "🍦",
-      "value": 70,
+      "value": 40,
       "bunColor": "#FFFAF0",
       "pattyColor": "#3C2415",
       "toppingColor": "#FFFFFF",
@@ -400,7 +400,7 @@
     "width": 5,
     "depth": 4,
     "color": "#2C3E50",
-    "balance": 9500
+    "balance": 0
   },
   "vaultUpgrades": {
     "earnings": 0,
@@ -413,7 +413,7 @@
     "z": -20.270689447321523,
     "width": 4,
     "depth": 4,
-    "hireCost": 100,
+    "hireCost": 600,
     "color": "#F1C40F",
     "staffHired": false,
     "moneyDeposited": 0,
@@ -610,7 +610,7 @@
   ],
   "cashierTile": {
     "x": 0,
-    "cost": 150,
+    "cost": 220,
     "color": "#3498DB",
     "moneyDeposited": 0,
     "z": -6,
@@ -620,7 +620,7 @@
     "deleted": false
   },
   "grillTile": {
-    "cost": 100,
+    "cost": 180,
     "deleted": false,
     "x": 0,
     "color": "#E74C3C",
@@ -638,7 +638,7 @@
     "x": 20,
     "unlocked": false,
     "moneyDeposited": 0,
-    "cost": 1000,
+    "cost": 2200,
     "z": -0.41427041514123175
   },
   "trashTile": {
@@ -647,7 +647,7 @@
     "depth": 4,
     "width": 4,
     "deleted": false,
-    "cost": 10,
+    "cost": 80,
     "x": 12,
     "unlocked": false,
     "moneyDeposited": 0
@@ -668,7 +668,7 @@
     "z": -3,
     "width": 4,
     "depth": 4,
-    "cost": 1000,
+    "cost": 1500,
     "color": "#3498DB",
     "unlocked": false,
     "moneyDeposited": 0,
@@ -706,7 +706,7 @@
     "z": 5,
     "width": 4,
     "depth": 4,
-    "cost": 500,
+    "cost": 900,
     "color": "#2C3E50",
     "unlocked": false,
     "moneyDeposited": 0,
@@ -723,7 +723,7 @@
     "z": -8,
     "width": 4,
     "depth": 4,
-    "cost": 1000,
+    "cost": 1500,
     "color": "#3498DB",
     "unlocked": false,
     "moneyDeposited": 0,
@@ -798,7 +798,7 @@
       "z": 5,
       "width": 4,
       "depth": 4,
-      "cost": 500,
+      "cost": 900,
       "color": "#2C3E50",
       "unlocked": false,
       "moneyDeposited": 0,
@@ -811,7 +811,7 @@
       "z": 5,
       "width": 4,
       "depth": 4,
-      "cost": 500,
+      "cost": 900,
       "color": "#E74C3C",
       "unlocked": false,
       "moneyDeposited": 0,
@@ -824,7 +824,7 @@
       "z": 5,
       "width": 4,
       "depth": 4,
-      "cost": 500,
+      "cost": 900,
       "color": "#3498DB",
       "unlocked": false,
       "moneyDeposited": 0,
@@ -837,7 +837,7 @@
       "z": 5,
       "width": 4,
       "depth": 4,
-      "cost": 500,
+      "cost": 900,
       "color": "#27AE60",
       "unlocked": false,
       "moneyDeposited": 0,
@@ -850,7 +850,7 @@
       "z": 5,
       "width": 4,
       "depth": 4,
-      "cost": 500,
+      "cost": 900,
       "color": "#F39C12",
       "unlocked": false,
       "moneyDeposited": 0,
@@ -881,7 +881,7 @@
     }
   },
   "driveThruStaffTile": {
-    "cost": 500,
+    "cost": 900,
     "x": 20,
     "z": 5,
     "extraStaff2Hired": false,

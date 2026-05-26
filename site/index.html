@@ -516,33 +516,6 @@
              color: #F1C40F;
          }
 
-         .prestige-rewards-list {
-             display: flex;
-             flex-direction: column;
-             gap: 12px;
-             margin-bottom: var(--space-md);
-         }
-
-         .prestige-reward-item {
-             display: flex;
-             align-items: center;
-             gap: 12px;
-             padding: 12px 16px;
-             background: rgba(155, 89, 182, 0.2);
-             border-radius: 12px;
-             border-left: 4px solid #9B59B6;
-         }
-
-         .reward-icon {
-             font-size: 20px;
-         }
-
-         .reward-text {
-             font-size: 14px;
-             font-weight: 500;
-             color: #ECF0F1;
-         }
-
          #vault-toggle {
              position: absolute;
              bottom: var(--screen-edge-bottom);
@@ -684,101 +657,6 @@
 
          .edit-mode #vault-panel {
              display: none;
-         }
-
-         /* ============================================
-      PRESTIGE SECTION STYLES
-      ============================================ */
-         .prestige-section {
-             background: linear-gradient(135deg, rgba(155, 89, 182, 0.3), rgba(142, 68, 173, 0.3));
-             border: 2px solid #9B59B6;
-             border-radius: 16px;
-             padding: var(--space-md);
-             margin-bottom: var(--space-md);
-             text-align: center;
-         }
-
-         .prestige-header {
-             display: flex;
-             align-items: center;
-             justify-content: center;
-             gap: 12px;
-             margin-bottom: 12px;
-         }
-
-         .prestige-btn-cost {
-             font-size: 18px;
-             font-weight: 700;
-             color: #F1C40F;
-             background: rgba(0, 0, 0, 0.3);
-             padding: 4px 16px;
-             border-radius: 12px;
-         }
-
-         /* Prestige Notification */
-         #prestige-notification {
-             position: absolute;
-             top: 50%;
-             left: 50%;
-             transform: translate(-50%, -50%) scale(0);
-             background: linear-gradient(135deg, #9B59B6, #8E44AD);
-             padding: 40px 60px;
-             border-radius: 28px;
-             box-shadow: 0 12px 48px rgba(155, 89, 182, 0.6), 0 0 100px rgba(241, 196, 15, 0.3);
-             z-index: 300;
-             pointer-events: none;
-             opacity: 0;
-             transition: transform 0.5s cubic-bezier(0.68, -0.6, 0.32, 1.6), opacity 0.4s ease-out;
-             border: 4px solid #F1C40F;
-             text-align: center;
-         }
-
-         #prestige-notification.show {
-             transform: translate(-50%, -50%) scale(1);
-             opacity: 1;
-         }
-
-         #prestige-notification .notification-icon {
-             font-size: 80px;
-             display: block;
-             margin-bottom: 16px;
-             animation: prestigeStarBig 0.8s ease-out;
-         }
-
-         @keyframes prestigeStarBig {
-             0% {
-                 transform: scale(0) rotate(-180deg);
-             }
-
-             50% {
-                 transform: scale(1.2) rotate(10deg);
-             }
-
-             100% {
-                 transform: scale(1) rotate(0deg);
-             }
-         }
-
-         #prestige-notification .notification-title {
-             font-size: 36px;
-             font-weight: 800;
-             color: #F1C40F;
-             text-transform: uppercase;
-             letter-spacing: 3px;
-             text-shadow: 0 3px 6px rgba(0, 0, 0, 0.3);
-             margin-bottom: 12px;
-         }
-
-         #prestige-notification .notification-subtitle {
-             font-size: 24px;
-             font-weight: 600;
-             color: #2ECC71;
-             margin-bottom: 8px;
-         }
-
-         #prestige-notification .notification-desc {
-             font-size: 16px;
-             color: rgba(255, 255, 255, 0.9);
          }
 
          /* ============================================
@@ -2570,7 +2448,7 @@
                   <span class="vault-upgrade-level"> 等级 <span class="level-num">0</span> </span>
                 </div>
                 <button class="vault-upgrade-btn">
-                  <span class="vault-cost-value">500</span>
+                  <span class="vault-cost-value">1200</span>
                 </button>
               </div>
               <div class="vault-upgrade-item" id="vault-upgrade-capacity">
@@ -2580,7 +2458,7 @@
                   <span class="vault-upgrade-level"> 等级 <span class="level-num">0</span> </span>
                 </div>
                 <button class="vault-upgrade-btn">
-                  <span class="vault-cost-value">750</span>
+                  <span class="vault-cost-value">1300</span>
                 </button>
               </div>
               <div class="vault-upgrade-item" id="vault-upgrade-tips">
@@ -2590,7 +2468,7 @@
                   <span class="vault-upgrade-level"> 等级 <span class="level-num">0</span> </span>
                 </div>
                 <button class="vault-upgrade-btn">
-                  <span class="vault-cost-value">1000</span>
+                  <span class="vault-cost-value">1600</span>
                 </button>
               </div>
               <div class="vault-upgrade-item" id="vault-upgrade-speed">
@@ -2600,7 +2478,7 @@
                   <span class="vault-upgrade-level"> 等级 <span class="level-num">0</span> </span>
                 </div>
                 <button class="vault-upgrade-btn">
-                  <span class="vault-cost-value">600</span>
+                  <span class="vault-cost-value">1000</span>
                 </button>
               </div>
               <div class="vault-upgrade-item" id="vault-upgrade-cook">
@@ -2610,7 +2488,7 @@
                   <span class="vault-upgrade-level"> 等级 <span class="level-num">0</span> </span>
                 </div>
                 <button class="vault-upgrade-btn">
-                  <span class="vault-cost-value">800</span>
+                  <span class="vault-cost-value">1400</span>
                 </button>
               </div>
               <div class="vault-upgrade-item" id="vault-upgrade-serve">
@@ -2620,7 +2498,7 @@
                   <span class="vault-upgrade-level"> 等级 <span class="level-num">0</span> </span>
                 </div>
                 <button class="vault-upgrade-btn">
-                  <span class="vault-cost-value">650</span>
+                  <span class="vault-cost-value">1200</span>
                 </button>
               </div>
               <div class="vault-upgrade-item" id="vault-upgrade-cashpile">
@@ -2630,7 +2508,7 @@
                   <span class="vault-upgrade-level"> 等级 <span class="level-num">0</span> </span>
                 </div>
                 <button class="vault-upgrade-btn">
-                  <span class="vault-cost-value">900</span>
+                  <span class="vault-cost-value">1500</span>
                 </button>
               </div>
             </div>
@@ -2642,7 +2520,7 @@
                   <span class="vault-upgrade-desc">堂食收入增加 5%</span>
                   <span class="vault-upgrade-level">等级 <span class="level-num">0</span></span>
                 </div>
-                <button class="vault-upgrade-btn"><span class="vault-cost-value">1200</span></button>
+                <button class="vault-upgrade-btn"><span class="vault-cost-value">1800</span></button>
               </div>
               <div class="vault-upgrade-item" id="vault-decor-signs">
                 <div class="vault-upgrade-info">
@@ -2650,7 +2528,7 @@
                   <span class="vault-upgrade-desc">顾客满意度增加 5%</span>
                   <span class="vault-upgrade-level">等级 <span class="level-num">0</span></span>
                 </div>
-                <button class="vault-upgrade-btn"><span class="vault-cost-value">1500</span></button>
+                <button class="vault-upgrade-btn"><span class="vault-cost-value">1800</span></button>
               </div>
               <div class="vault-upgrade-item" id="vault-decor-plants">
                 <div class="vault-upgrade-info">
@@ -2658,7 +2536,7 @@
                   <span class="vault-upgrade-desc">高峰期小费增加 5%</span>
                   <span class="vault-upgrade-level">等级 <span class="level-num">0</span></span>
                 </div>
-                <button class="vault-upgrade-btn"><span class="vault-cost-value">800</span></button>
+                <button class="vault-upgrade-btn"><span class="vault-cost-value">1800</span></button>
               </div>
             </div>
           </div>
@@ -2675,16 +2553,12 @@
                 <span class="stat-value" id="stat-total-money">$0</span>
               </div>
               <div class="vault-stat-item">
-                <span class="stat-label" data-i18n="vault.stats.prestigeLevel">声望等级</span>
-                <span class="stat-value" id="stat-prestige-level">0</span>
-              </div>
-              <div class="vault-stat-item">
                 <span class="stat-label" data-i18n="vault.stats.profitMultiplier">收益倍率</span>
                 <span class="stat-value" id="stat-profit-mult">x1.00</span>
               </div>
               <div class="vault-stat-item">
                 <span class="stat-label" data-i18n="vault.stats.vipChance">贵宾概率</span>
-                <span class="stat-value" id="stat-vip-chance">15%</span>
+                <span class="stat-value" id="stat-vip-chance">5%</span>
               </div>
               <div class="vault-stat-item">
                 <span class="stat-label" data-i18n="vault.stats.moveSpeed">移动速度</span>
@@ -3418,7 +3292,6 @@
               },
               stats: {
                 vaultBalance: '金库余额',
-                prestigeLevel: '声望等级',
                 profitMultiplier: '收益倍率',
                 vipChance: '贵宾概率',
                 moveSpeed: '移动速度',
@@ -3528,7 +3401,6 @@
               },
               stats: {
                 vaultBalance: '🏦 Saldo de Bóveda',
-                prestigeLevel: '⭐ Nivel de Prestigio',
                 profitMultiplier: '📈 Multiplicador de Ganancias',
                 vipChance: '👥 Probabilidad VIP',
                 moveSpeed: '🏃 Velocidad',
@@ -3637,7 +3509,6 @@
               },
               stats: {
                 vaultBalance: '🏦 ভল্ট ব্যালান্স',
-                prestigeLevel: '⭐ প্রেস্টিজ লেভেল',
                 profitMultiplier: '📈 লাভ গুণক',
                 vipChance: '👥 ভিআইপি সম্ভাবনা',
                 moveSpeed: '🏃 চলার গতি',
@@ -3746,7 +3617,6 @@
               },
               stats: {
                 vaultBalance: '🏦 Số dư kho',
-                prestigeLevel: '⭐ Cấp uy tín',
                 profitMultiplier: '📈 Hệ số lợi nhuận',
                 vipChance: '👥 Tỷ lệ VIP',
                 moveSpeed: '🏃 Tốc độ di chuyển',
@@ -3855,7 +3725,6 @@
               },
               stats: {
                 vaultBalance: '🏦 तिजोरी शिल्लक',
-                prestigeLevel: '⭐ प्रेस्टिज स्तर',
                 profitMultiplier: '📈 नफा गुणक',
                 vipChance: '👥 VIP शक्यता',
                 moveSpeed: '🏃 गती',
@@ -3964,7 +3833,6 @@
               },
               stats: {
                 vaultBalance: '🏦 والٹ بیلنس',
-                prestigeLevel: '⭐ پریسٹیج لیول',
                 profitMultiplier: '📈 منافع ضرب',
                 vipChance: '👥 وی آئی پی امکان',
                 moveSpeed: '🏃 رفتار',
@@ -4074,7 +3942,6 @@
               },
               stats: {
                 vaultBalance: '🏦 رصيد القبو',
-                prestigeLevel: '⭐ مستوى الهيبة',
                 profitMultiplier: '📈 مضاعف الأرباح',
                 vipChance: '👥 فرصة VIP',
                 moveSpeed: '🏃 سرعة الحركة',
@@ -4620,9 +4487,9 @@ function createSelfOrderKiosks() {
                   customerQueue.push(kiosk.queue.splice(i, 1)[0]);
                 } else {
               const tipMult =
-                    (c.isVIP ? window.gameConfig.vipCustomers?.tipMultiplier || 3 : 1) *
+                    (c.isVIP ? window.gameConfig.vipCustomers?.tipMultiplier || 2 : 1) *
                     getRushHourTipMultiplier() *
-                    getPrestigeProfitMultiplier();
+                    getStoreProfitMultiplier();
                   const itemVal = window.gameConfig.resources.itemValue || 100;
                   
                   const startPos = { x: kiosk.mesh.position.x, y: 1.5, z: kiosk.mesh.position.z };
@@ -7895,11 +7762,11 @@ function createSelfOrderKiosks() {
 
             // Calculate payment
             const vipConfig = window.gameConfig.vipCustomers || {
-              tipMultiplier: 3,
+              tipMultiplier: 2,
             };
             const rushMultiplier = getRushHourTipMultiplier();
-            const prestigeMultiplier = getPrestigeProfitMultiplier();
-            const tipMultiplier = rushMultiplier * prestigeMultiplier;
+            const storeMultiplier = getStoreProfitMultiplier();
+            const tipMultiplier = rushMultiplier * storeMultiplier;
             const basePrice =
               servedMenuItem && servedMenuItem.value
                 ? servedMenuItem.value
@@ -11775,92 +11642,15 @@ function createSelfOrderKiosks() {
 
         // Update vault upgrade buttons
         updateVaultUpgradeUI();
-
-        // Update prestige UI
-        updatePrestigeUI();
       }
 
-      function updatePrestigeUI() {
-        const prestige = window.gameConfig.prestige || {
-          level: 0,
-          baseCost: 5000,
-          costMultiplier: 2.5,
-          profitBonus: 0.1,
-        };
-
-        const levelEl = document.getElementById('prestige-level');
-        const bonusEl = document.getElementById('prestige-bonus');
-        const costEl = document.getElementById('prestige-cost');
-        const btnEl = document.getElementById('prestige-btn');
-
-        if (levelEl) {
-          levelEl.textContent = prestige.level;
-        }
-
-        if (bonusEl) {
-          const totalBonus = Math.round(prestige.level * prestige.profitBonus * 100);
-          bonusEl.textContent = totalBonus;
-        }
-
-        const prestigeCost = Math.floor(
-          prestige.baseCost * Math.pow(prestige.costMultiplier, prestige.level)
-        );
-
-        if (costEl) {
-          costEl.textContent = formatCurrencyAbbrev(prestigeCost);
-        }
-
-        if (btnEl) {
-          btnEl.disabled = vaultBalance < prestigeCost;
-        }
-      }
-
-      function getPrestigeProfitMultiplier() {
-        const prestige = window.gameConfig.prestige || {
-          level: 0,
-          profitBonus: 0.1,
-        };
+      function getStoreProfitMultiplier() {
         const tableBonus = 1 + (window.gameConfig.decorationUpgrades?.tables?.level || 0) * 0.05;
-        return (1 + prestige.level * prestige.profitBonus) * tableBonus;
+        return tableBonus;
       }
 
       function performPrestige() {
-        if (gameMode === 'edit') return;
-
-        const prestige = window.gameConfig.prestige || {
-          level: 0,
-          baseCost: 5000,
-          costMultiplier: 2.5,
-          profitBonus: 0.1,
-        };
-        const prestigeCost = Math.floor(
-          prestige.baseCost * Math.pow(prestige.costMultiplier, prestige.level)
-        );
-
-        if (vaultBalance < prestigeCost) {
-          return;
-        }
-
-        // Deduct cost from vault
-        modifyVaultBalance(-prestigeCost);
-
-        // Increment prestige level (this persists)
-        prestige.level++;
-        window.gameConfig.prestige = prestige;
-
-        // Show prestige notification
-        showPrestigeNotification(prestige.level);
-
-        // Close vault panel
-        const vaultPanel = document.getElementById('vault-panel');
-        if (vaultPanel) {
-          vaultPanel.classList.remove('open');
-        }
-
-        // Reset everything after a brief delay for the notification
-        setTimeout(() => {
-          resetForPrestige();
-        }, 1500);
+        return;
       }
 
       function showPrestigeNotification(newLevel) {
@@ -12593,7 +12383,7 @@ if (layoutData.selfOrderKiosks) {
         const earningsEl = document.getElementById('vault-upgrade-earnings');
         if (earningsEl) {
           const level = upgrades.earnings || 0;
-          const cost = Math.floor(700 * Math.pow(1.8, level));
+          const cost = Math.floor(1200 * Math.pow(1.8, level));
           earningsEl.querySelector('.level-num').textContent = level;
           earningsEl.querySelector('.vault-cost-value').textContent = cost;
           earningsEl.querySelector('.vault-upgrade-btn').disabled = vaultBalance < cost;
@@ -12603,7 +12393,7 @@ if (layoutData.selfOrderKiosks) {
         const capacityEl = document.getElementById('vault-upgrade-capacity');
         if (capacityEl) {
           const level = upgrades.capacity || 0;
-          const cost = Math.floor(750 * Math.pow(1.7, level));
+          const cost = Math.floor(1300 * Math.pow(1.7, level));
           capacityEl.querySelector('.level-num').textContent = level;
           capacityEl.querySelector('.vault-cost-value').textContent = cost;
           capacityEl.querySelector('.vault-upgrade-btn').disabled = vaultBalance < cost;
@@ -12613,7 +12403,7 @@ if (layoutData.selfOrderKiosks) {
         const tipsEl = document.getElementById('vault-upgrade-tips');
         if (tipsEl) {
           const level = upgrades.tips || 0;
-          const cost = Math.floor(1000 * Math.pow(2, level));
+          const cost = Math.floor(1600 * Math.pow(2, level));
           tipsEl.querySelector('.level-num').textContent = level;
           tipsEl.querySelector('.vault-cost-value').textContent = cost;
           tipsEl.querySelector('.vault-upgrade-btn').disabled = vaultBalance < cost || level >= 10;
@@ -12624,7 +12414,7 @@ if (layoutData.selfOrderKiosks) {
         const speedEl = document.getElementById('vault-upgrade-speed');
         if (speedEl) {
           const level = upgrades.speed || 0;
-          const cost = Math.floor(600 * Math.pow(1.6, level));
+          const cost = Math.floor(1000 * Math.pow(1.6, level));
           speedEl.querySelector('.level-num').textContent = level;
           speedEl.querySelector('.vault-cost-value').textContent = cost;
           speedEl.querySelector('.vault-upgrade-btn').disabled = vaultBalance < cost || level >= 10;
@@ -12635,7 +12425,7 @@ if (layoutData.selfOrderKiosks) {
         const cookEl = document.getElementById('vault-upgrade-cook');
         if (cookEl) {
           const level = upgrades.cook || 0;
-          const cost = Math.floor(800 * Math.pow(1.7, level));
+          const cost = Math.floor(1400 * Math.pow(1.7, level));
           cookEl.querySelector('.level-num').textContent = level;
           cookEl.querySelector('.vault-cost-value').textContent = cost;
           cookEl.querySelector('.vault-upgrade-btn').disabled = vaultBalance < cost || level >= 10;
@@ -12645,7 +12435,7 @@ if (layoutData.selfOrderKiosks) {
         const serveEl = document.getElementById('vault-upgrade-serve');
         if (serveEl) {
           const level = upgrades.serve || 0;
-          const cost = Math.floor(650 * Math.pow(1.6, level));
+          const cost = Math.floor(1200 * Math.pow(1.6, level));
           serveEl.querySelector('.level-num').textContent = level;
           serveEl.querySelector('.vault-cost-value').textContent = cost;
           serveEl.querySelector('.vault-upgrade-btn').disabled = vaultBalance < cost || level >= 10;
@@ -12655,7 +12445,7 @@ if (layoutData.selfOrderKiosks) {
         const cashpileEl = document.getElementById('vault-upgrade-cashpile');
         if (cashpileEl) {
           const level = upgrades.cashpile || 0;
-          const cost = Math.floor(900 * Math.pow(1.6, level));
+          const cost = Math.floor(1500 * Math.pow(1.6, level));
           cashpileEl.querySelector('.level-num').textContent = level;
           cashpileEl.querySelector('.vault-cost-value').textContent = cost;
           cashpileEl.querySelector('.vault-upgrade-btn').disabled =
@@ -12666,7 +12456,7 @@ if (layoutData.selfOrderKiosks) {
           const el = document.getElementById('vault-decor-' + type);
           if (el) {
             const level = (window.gameConfig.decorationUpgrades && window.gameConfig.decorationUpgrades[type]?.level) || 0;
-            const cost = Math.floor(800 * Math.pow(2.2, level));
+            const cost = Math.floor(1800 * Math.pow(2.2, level));
             el.querySelector('.level-num').textContent = level;
             el.querySelector('.vault-cost-value').textContent = formatCurrencyAbbrev(cost);
             el.querySelector('.vault-upgrade-btn').disabled = vaultBalance < cost || level >= 5;
@@ -12691,14 +12481,14 @@ if (layoutData.selfOrderKiosks) {
 
         switch (type) {
           case 'earnings':
-            cost = Math.floor(700 * Math.pow(1.8, upgrades.earnings || 0));
+            cost = Math.floor(1200 * Math.pow(1.8, upgrades.earnings || 0));
             if (vaultBalance >= cost) {
               modifyVaultBalance(-cost);
               upgrades.earnings = (upgrades.earnings || 0) + 1;
             }
             break;
           case 'capacity':
-            cost = Math.floor(750 * Math.pow(1.7, upgrades.capacity || 0));
+            cost = Math.floor(1300 * Math.pow(1.7, upgrades.capacity || 0));
             if (vaultBalance >= cost) {
               modifyVaultBalance(-cost);
               upgrades.capacity = (upgrades.capacity || 0) + 1;
@@ -12710,20 +12500,20 @@ if (layoutData.selfOrderKiosks) {
             const tipsLevel = upgrades.tips || 0;
             if (tipsLevel >= 10) return;
             // Max level
-            cost = Math.floor(1000 * Math.pow(2, tipsLevel));
+            cost = Math.floor(1600 * Math.pow(2, tipsLevel));
             if (vaultBalance >= cost) {
               modifyVaultBalance(-cost);
               upgrades.tips = tipsLevel + 1;
               // Update VIP spawn chance
               if (!window.gameConfig.vipCustomers) window.gameConfig.vipCustomers = {};
-              window.gameConfig.vipCustomers.spawnChance = 0.15 + upgrades.tips * 0.05;
+              window.gameConfig.vipCustomers.spawnChance = 0.05 + upgrades.tips * 0.05;
             }
             break;
           case 'speed':
             const speedLevel = upgrades.speed || 0;
             if (speedLevel >= 10) return;
             // Max level
-            cost = Math.floor(600 * Math.pow(1.6, speedLevel));
+            cost = Math.floor(1000 * Math.pow(1.6, speedLevel));
             if (vaultBalance >= cost) {
               modifyVaultBalance(-cost);
               upgrades.speed = speedLevel + 1;
@@ -12732,7 +12522,7 @@ if (layoutData.selfOrderKiosks) {
           case 'cook':
             const cookLevel = upgrades.cook || 0;
             if (cookLevel >= 10) return;
-            cost = Math.floor(800 * Math.pow(1.7, cookLevel));
+            cost = Math.floor(1400 * Math.pow(1.7, cookLevel));
             if (vaultBalance >= cost) {
               modifyVaultBalance(-cost);
               upgrades.cook = cookLevel + 1;
@@ -12742,7 +12532,7 @@ if (layoutData.selfOrderKiosks) {
           case 'serve':
             const serveLevel = upgrades.serve || 0;
             if (serveLevel >= 10) return;
-            cost = Math.floor(650 * Math.pow(1.6, serveLevel));
+            cost = Math.floor(1200 * Math.pow(1.6, serveLevel));
             if (vaultBalance >= cost) {
               modifyVaultBalance(-cost);
               upgrades.serve = serveLevel + 1;
@@ -12752,7 +12542,7 @@ if (layoutData.selfOrderKiosks) {
           case 'cashpile':
             const cashpileLevel = upgrades.cashpile || 0;
             if (cashpileLevel >= 10) return;
-            cost = Math.floor(900 * Math.pow(1.6, cashpileLevel));
+            cost = Math.floor(1500 * Math.pow(1.6, cashpileLevel));
             if (vaultBalance >= cost) {
               modifyVaultBalance(-cost);
               upgrades.cashpile = cashpileLevel + 1;
@@ -12765,7 +12555,7 @@ if (layoutData.selfOrderKiosks) {
             if (!window.gameConfig.decorationUpgrades) window.gameConfig.decorationUpgrades = { tables: { level: 0 }, signs: { level: 0 }, plants: { level: 0 } };
             const dLevel = window.gameConfig.decorationUpgrades[dType].level || 0;
             if (dLevel >= 5) return;
-            cost = Math.floor(800 * Math.pow(2.2, dLevel));
+            cost = Math.floor(1800 * Math.pow(2.2, dLevel));
             if (vaultBalance >= cost) {
               modifyVaultBalance(-cost);
               window.gameConfig.decorationUpgrades[dType].level = dLevel + 1;
@@ -12975,17 +12765,11 @@ if (layoutData.selfOrderKiosks) {
           if (decorSignsBtn) decorSignsBtn.addEventListener('click', () => purchaseVaultUpgrade('decor_signs'));
           if (decorPlantsBtn) decorPlantsBtn.addEventListener('click', () => purchaseVaultUpgrade('decor_plants'));
 
-          // Setup prestige button
-          const prestigeBtn = document.getElementById('prestige-btn');
-          if (prestigeBtn) {
-            prestigeBtn.addEventListener('click', () => performPrestige());
-          }
         }
       }
 
       function updateStatsUI() {
         const vaultBalanceEl = document.getElementById('stat-vault-balance');
-        const prestigeLevelEl = document.getElementById('stat-prestige-level');
         const profitMultEl = document.getElementById('stat-profit-mult');
         const vipChanceEl = document.getElementById('stat-vip-chance');
         const moveSpeedEl = document.getElementById('stat-move-speed');
@@ -12993,21 +12777,15 @@ if (layoutData.selfOrderKiosks) {
 
         if (vaultBalanceEl) vaultBalanceEl.textContent = '$' + formatCurrencyAbbrev(vaultBalance);
         updateTotalMoneyUI();
-        if (prestigeLevelEl) {
-          const prestige = window.gameConfig.prestige || {
-            level: 0,
-          };
-          prestigeLevelEl.textContent = prestige.level;
-        }
         if (profitMultEl) {
-          const prestigeMult = getPrestigeProfitMultiplier();
+          const storeMult = getStoreProfitMultiplier();
           const rushMult = getRushHourTipMultiplier();
-          const totalMult = prestigeMult * rushMult;
+          const totalMult = storeMult * rushMult;
           profitMultEl.textContent = 'x' + totalMult.toFixed(2);
         }
         if (vipChanceEl) {
           const upgrades = window.gameConfig.vaultUpgrades || {};
-          const baseChance = 15;
+          const baseChance = Math.round((window.gameConfig.vipCustomers?.spawnChance || 0.05) * 100);
           const upgradeBonus = (upgrades.tips || 0) * 5;
           vipChanceEl.textContent = baseChance + upgradeBonus + '%';
         }
@@ -14736,12 +14514,12 @@ if (layoutData.selfOrderKiosks) {
             if (!firstWaiting.alreadyPaid) {
               // Use the served item's value, VIP multiplier, and rush hour bonus
               const vipConfig = window.gameConfig.vipCustomers || {
-                tipMultiplier: 3,
+                tipMultiplier: 2,
               };
               const vipMultiplier = firstWaiting.isVIP ? vipConfig.tipMultiplier : 1;
               const rushMultiplier = getRushHourTipMultiplier();
-              const prestigeMultiplier = getPrestigeProfitMultiplier();
-              const tipMultiplier = vipMultiplier * rushMultiplier * prestigeMultiplier;
+              const storeMultiplier = getStoreProfitMultiplier();
+              const tipMultiplier = vipMultiplier * rushMultiplier * storeMultiplier;
               // Use the menu item's value, or fallback to default
               const basePrice =
                 servedMenuItem && servedMenuItem.value
@@ -14832,12 +14610,12 @@ if (layoutData.selfOrderKiosks) {
 
             if (!secondWaiting.alreadyPaid) {
               const vipConfig = window.gameConfig.vipCustomers || {
-                tipMultiplier: 3,
+                tipMultiplier: 2,
               };
               const vipMultiplier = secondWaiting.isVIP ? vipConfig.tipMultiplier : 1;
               const rushMultiplier = getRushHourTipMultiplier();
-              const prestigeMultiplier = getPrestigeProfitMultiplier();
-              const tipMultiplier = vipMultiplier * rushMultiplier * prestigeMultiplier;
+              const storeMultiplier = getStoreProfitMultiplier();
+              const tipMultiplier = vipMultiplier * rushMultiplier * storeMultiplier;
               const basePrice =
                 servedMenuItem && servedMenuItem.value
                   ? servedMenuItem.value
@@ -19704,8 +19482,8 @@ if (layoutData.selfOrderKiosks) {
         // Calculate elapsed time in seconds
         let elapsedSeconds = (now - lastPlayed) / 1000;
 
-        // Cap at 8 hours (28800 seconds)
-        const maxOfflineTime = 8 * 60 * 60;
+        // Cap at 4 hours so offline rewards cannot skip the active progression curve.
+        const maxOfflineTime = 4 * 60 * 60;
         elapsedSeconds = Math.min(elapsedSeconds, maxOfflineTime);
 
         // Only award if away for more than 5 minutes
@@ -19725,12 +19503,11 @@ if (layoutData.selfOrderKiosks) {
         // Calculate earnings
         let earningsPerSecond = 0;
 
-        // Base rate when cashier is hired: ~$17/second (50% of normal $33/second rate)
-        // This is based on: 1 customer every 3 seconds, ~$100 per burger, with 50% offline efficiency
+        // Conservative offline rate: 1 fallback item every 3 seconds at 30% efficiency.
         if (hasCashierStaff) {
           const burgerPrice = window.gameConfig.resources.itemValue || 100;
-          const offlineEfficiency = 0.5;
-          // 50% of normal rate
+          const offlineEfficiency = 0.3;
+          // 30% of normal rate
           const customersPerSecond = 1 / 3;
           // 1 customer every 3 seconds
           earningsPerSecond += burgerPrice * customersPerSecond * offlineEfficiency;
@@ -19752,15 +19529,7 @@ if (layoutData.selfOrderKiosks) {
         const vaultUpgrades = savedState.vaultUpgrades || window.gameConfig.vaultUpgrades || {};
         const offlineEarningsBoost = 1 + (vaultUpgrades.earnings || 0) * 0.25;
 
-        // Apply prestige multiplier
-        const prestige = savedState.prestige ||
-          window.gameConfig.prestige || {
-            level: 0,
-            profitBonus: 0.1,
-          };
-        const prestigeBoost = 1 + prestige.level * (prestige.profitBonus || 0.1);
-
-        earningsPerSecond *= offlineEarningsBoost * prestigeBoost;
+        earningsPerSecond *= offlineEarningsBoost * getStoreProfitMultiplier();
 
         const totalEarnings = earningsPerSecond * elapsedSeconds;
 
@@ -22445,20 +22214,8 @@ case 'selfOrderKiosk':
               if (savedState.vaultUpgrades.tips) {
                 if (!window.gameConfig.vipCustomers) window.gameConfig.vipCustomers = {};
                 window.gameConfig.vipCustomers.spawnChance =
-                  0.15 + savedState.vaultUpgrades.tips * 0.05;
+                  0.05 + savedState.vaultUpgrades.tips * 0.05;
               }
-            }
-
-            // Restore prestige
-            if (savedState.prestige) {
-              if (!window.gameConfig.prestige) {
-                window.gameConfig.prestige = {
-                  baseCost: 5000,
-                  costMultiplier: 2.5,
-                  profitBonus: 0.1,
-                };
-              }
-              window.gameConfig.prestige.level = savedState.prestige.level || 0;
             }
 
             if (savedState.decorationUpgrades) {
@@ -22652,10 +22409,6 @@ if (savedState.selfOrderKiosks) {
             },
             tutorialHasCleanedTable: !!window.gameConfig.tutorialHasCleanedTable,
             tutorialCompleted: !!window.gameConfig.tutorialCompleted,
-            prestige: {
-              level: window.gameConfig.prestige?.level || 0,
-              profitBonus: window.gameConfig.prestige?.profitBonus || 0.1,
-            },
             decorationUpgrades: window.gameConfig.decorationUpgrades || {},
             selfOrderKiosks: window.gameConfig.selfOrderKiosks
               ? window.gameConfig.selfOrderKiosks.map((k) => ({ deleted: k.deleted || false }))
@@ -22951,23 +22704,6 @@ if (savedState.selfOrderKiosks) {
                   updateDriveThruStaffProgress();
                   updateDriveThruStaffCostDisplay();
                 }
-              },
-            },
-            'Prestige Level': {
-              key: 'gameConfig.prestige.level',
-              type: 'slider',
-              min: 0,
-              max: 10,
-              step: 1,
-              onChange: (value) => {
-                if (!window.gameConfig.prestige)
-                  window.gameConfig.prestige = {
-                    baseCost: 5000,
-                    costMultiplier: 2.5,
-                    profitBonus: 0.1,
-                  };
-                window.gameConfig.prestige.level = value;
-                updatePrestigeUI();
               },
             },
             'Table Price': {
