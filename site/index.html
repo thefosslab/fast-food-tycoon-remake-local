@@ -5974,7 +5974,7 @@ function createSelfOrderKiosks() {
 
         // Create player using stickman model
         if (stickmanModelLoaded && stickmanModelTemplate) {
-          player = createStickmanInstance(0xffffff);
+          player = createStickmanInstance(config.color || 0xe74c3c, { role: 'player' });
         } else {
           // Fallback to original player creation if model not loaded
           player = new THREE.Group();
@@ -10753,6 +10753,13 @@ function createSelfOrderKiosks() {
         // Support asset IDs from the host asset map as well as full URLs.
         let STICKMAN_MODEL_URL = window.gameConfig.stickmanModelURL;
 
+        if (!STICKMAN_MODEL_URL) {
+          stickmanModelTemplate = null;
+          stickmanModelLoaded = false;
+          lib.log('Stickman model disabled; using local cartoon character meshes.');
+          return null;
+        }
+
         // If the config value looks like an asset id (no protocol), try resolving via lib.getAsset
         try {
           if (STICKMAN_MODEL_URL && typeof STICKMAN_MODEL_URL === 'string' && !/^https?:\/\//i.test(STICKMAN_MODEL_URL)) {
@@ -10937,6 +10944,101 @@ function createSelfOrderKiosks() {
         return hatGroup;
       }
 
+      function createChefHat() {
+        const hatGroup = new THREE.Group();
+        const hatMaterial = new THREE.MeshStandardMaterial({
+          color: 0xffffff,
+          roughness: 0.45,
+          metalness: 0.05,
+        });
+
+        const band = new THREE.Mesh(new THREE.CylinderGeometry(0.28, 0.3, 0.12, 16), hatMaterial);
+        band.position.y = 0;
+        band.castShadow = true;
+        hatGroup.add(band);
+
+        const puffs = [
+          [0, 0.16, 0, 0.24],
+          [-0.16, 0.12, 0.02, 0.18],
+          [0.16, 0.12, 0.02, 0.18],
+          [0, 0.12, 0.15, 0.18],
+        ];
+        puffs.forEach(([x, y, z, r]) => {
+          const puff = new THREE.Mesh(new THREE.SphereGeometry(r, 16, 10), hatMaterial);
+          puff.position.set(x, y, z);
+          puff.castShadow = true;
+          hatGroup.add(puff);
+        });
+
+        hatGroup.scale.setScalar(0.9);
+        return hatGroup;
+      }
+
+      function createCharacterFace() {
+        const faceGroup = new THREE.Group();
+        const eyeMaterial = new THREE.MeshBasicMaterial({ color: 0x1f2933 });
+        const eyeGeometry = new THREE.SphereGeometry(0.045, 10, 10);
+
+        const leftEye = new THREE.Mesh(eyeGeometry, eyeMaterial);
+        leftEye.position.set(-0.09, 0.05, 0.02);
+        faceGroup.add(leftEye);
+
+        const rightEye = new THREE.Mesh(eyeGeometry, eyeMaterial);
+        rightEye.position.set(0.09, 0.05, 0.02);
+        faceGroup.add(rightEye);
+
+        const smile = new THREE.Mesh(
+          new THREE.TorusGeometry(0.09, 0.008, 8, 18, Math.PI),
+          eyeMaterial
+        );
+        smile.position.set(0, -0.04, 0.02);
+        smile.rotation.z = Math.PI;
+        faceGroup.add(smile);
+
+        faceGroup.position.set(0, 1.62, 0.31);
+        return faceGroup;
+      }
+
+      function createUniformOverlay(color = 0xe74c3c, role = 'customer') {
+        const uniformGroup = new THREE.Group();
+        const uniformMaterial = new THREE.MeshStandardMaterial({
+          color,
+          roughness: 0.6,
+          metalness: 0.05,
+        });
+        const trimMaterial = new THREE.MeshStandardMaterial({
+          color: role === 'player' ? 0xffffff : 0x222831,
+          roughness: 0.55,
+          metalness: 0.05,
+        });
+
+        const chest = new THREE.Mesh(new THREE.BoxGeometry(0.52, 0.48, 0.06), uniformMaterial);
+        chest.position.set(0, 1.05, 0.32);
+        chest.castShadow = true;
+        uniformGroup.add(chest);
+
+        const strapLeft = new THREE.Mesh(new THREE.BoxGeometry(0.05, 0.36, 0.065), trimMaterial);
+        strapLeft.position.set(-0.16, 1.28, 0.325);
+        strapLeft.rotation.z = -0.2;
+        uniformGroup.add(strapLeft);
+
+        const strapRight = strapLeft.clone();
+        strapRight.position.x = 0.16;
+        strapRight.rotation.z = 0.2;
+        uniformGroup.add(strapRight);
+
+        if (role === 'player') {
+          const badge = new THREE.Mesh(
+            new THREE.CircleGeometry(0.07, 16),
+            new THREE.MeshBasicMaterial({ color: 0xffc72c })
+          );
+          badge.position.set(0.18, 1.14, 0.356);
+          uniformGroup.add(badge);
+        }
+
+        return uniformGroup;
+      }
+
       function findCharacterHead(characterGroup) {
         return (
           characterGroup.getObjectByName('head_leaf') ||
@@ -10948,12 +11050,13 @@ function createSelfOrderKiosks() {
       function createStickmanInstance(color = 0xffffff, options = {}) {
         if (!stickmanModelLoaded || !stickmanModelTemplate) {
           // Fallback to simple mesh if model not loaded
-          return createFallbackCharacter(color);
+          return createFallbackCharacter(color, options);
         }
 
         const characterGroup = new THREE.Group();
         const characterColor = Number.isFinite(color) ? color : 0xffffff;
         const addStaffHat = !!options.staffHat;
+        const role = options.role || (addStaffHat ? 'staff' : 'customer');
 
         // Clone the model
         const model =
@@ -10961,36 +11064,44 @@ function createSelfOrderKiosks() {
             ? THREE.SkeletonUtils.clone(stickmanModelTemplate.scene)
             : stickmanModelTemplate.scene.clone();
 
-        // Auto-scale to height of ~2.0
+        // Auto-scale to match the rest of the game's PLAYER_HEIGHT-based interactions.
         const box = new THREE.Box3().setFromObject(stickmanModelTemplate.scene);
         const size = box.getSize(new THREE.Vector3());
         if (size.y > 0.1) {
-          const targetScale = 3.0 / size.y;
+          const targetScale = PLAYER_HEIGHT / size.y;
           model.scale.set(targetScale, targetScale, targetScale);
         } else {
-          model.scale.set(1.5, 1.5, 1.5);
+          model.scale.set(1.25, 1.25, 1.25);
         }
-        model.position.y = -0.15;
+        model.position.y = 0;
 
-        // Apply color tint to the model
+        // Preserve the source model material; use overlays for uniforms and expressions.
         model.traverse((child) => {
           if (child.isMesh) {
             child.castShadow = true;
             child.receiveShadow = true;
-            // Create a reliable material to avoid black rendering
-            child.material = new THREE.MeshStandardMaterial({
-              color: characterColor === 0xffffff ? 0xf2f2f2 : characterColor,
-              roughness: 0.6,
-              metalness: 0.1,
-              skinning: !!child.isSkinnedMesh,
-            });
+            if (child.material) {
+              child.material = child.material.clone();
+              child.material.roughness = Math.min(child.material.roughness ?? 0.7, 0.75);
+              child.material.metalness = 0;
+              if ('skinning' in child.material) child.material.skinning = !!child.isSkinnedMesh;
+            }
             child.frustumCulled = false;
           }
         });
 
         characterGroup.add(model);
+        characterGroup.add(createCharacterFace());
+        characterGroup.add(createUniformOverlay(characterColor, role));
 
-        // Add McDonald's hat only for staff, not for player/customers.
+        if (role === 'player') {
+          const chefHat = createChefHat();
+          chefHat.position.set(0, PLAYER_HEIGHT + 0.08, 0.02);
+          characterGroup.add(chefHat);
+          characterGroup.userData.chefHat = chefHat;
+        }
+
+        // Add McDonald's hat only for staff, not for customers.
         if (addStaffHat) {
           const mcHat = createMcDonaldsHat();
           const head = findCharacterHead(characterGroup);
@@ -11117,7 +11228,7 @@ function createSelfOrderKiosks() {
         characterGroup.userData.currentAnim = animName;
       }
 
-      function createFallbackCharacter(color = 0xffffff) {
+      function createFallbackCharacter(color = 0xffffff, options = {}) {
         // Fallback simple character if model fails to load
         const characterGroup = new THREE.Group();
 
@@ -11157,6 +11268,22 @@ function createSelfOrderKiosks() {
         const rightEye = new THREE.Mesh(eyeGeometry, eyeMaterial);
         rightEye.position.set(0.14, 1.65, 0.32);
         characterGroup.add(rightEye);
+
+        const smile = new THREE.Mesh(
+          new THREE.TorusGeometry(0.12, 0.012, 8, 18, Math.PI),
+          eyeMaterial
+        );
+        smile.position.set(0, 1.55, 0.35);
+        smile.rotation.z = Math.PI;
+        characterGroup.add(smile);
+
+        if (options.staffHat) {
+          const staffHat = createMcDonaldsHat();
+          staffHat.position.set(0, 1.98, 0.03);
+          staffHat.scale.setScalar(1.05);
+          characterGroup.add(staffHat);
+          characterGroup.userData.mcHat = staffHat;
+        }
 
         characterGroup.userData.squishState = {
           scaleY: 1,

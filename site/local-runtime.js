@@ -3,7 +3,7 @@
   const LEADERBOARD_KEY = 'astrocade.fast-food-tycoon-remake.leaderboard.v1';
 
   window.gameConfig = {
-  "stickmanModelURL": "stickman-animated_compressed.glb",
+  "stickmanModelURL": null,
   "player": {
     "color": "#E74C3C",
     "startX": -16,
