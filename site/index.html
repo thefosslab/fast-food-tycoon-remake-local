@@ -1375,54 +1375,6 @@
              }
          }
 
-         @media (max-height: 520px) and (orientation: landscape) {
-             :root {
-                 --top-control-size: 46px;
-                 --top-control-gap: 8px;
-                 --bottom-control-size: 68px;
-             }
-
-             #hud {
-                 top: var(--top-safe-y);
-             }
-
-             #currency-display {
-                 padding: 7px 12px;
-             }
-
-             #coin-icon {
-                 width: 28px;
-                 height: 28px;
-             }
-
-             #currency-value {
-                 font-size: 26px;
-                 min-width: 54px;
-             }
-
-             #joystick-base {
-                 width: 124px;
-                 height: 124px;
-                 bottom: max(38px, calc(var(--safe-bottom) + 34px));
-             }
-
-             #joystick-stick {
-                 width: 52px;
-                 height: 52px;
-             }
-
-             #collection-progress {
-                 bottom: calc(var(--safe-bottom) + 142px);
-             }
-
-             #tutorial-hint {
-                 bottom: calc(var(--safe-bottom) + 172px) !important;
-                 font-size: 22px !important;
-                 padding: 12px 18px !important;
-                 max-width: min(720px, calc(100% - 180px)) !important;
-             }
-         }
-
          /* Edit mode styles */
          .edit-mode #upgrade-panel {
              display: none;
