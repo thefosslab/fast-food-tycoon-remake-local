@@ -2,6 +2,10 @@
 <html lang="zh-CN">
   <head>
     <meta charset="UTF-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, viewport-fit=cover, user-scalable=no"
+    />
     <title>快餐大亨</title>
     <!-- <script src="loader.js"></script> -->
     <style>
@@ -35,23 +39,47 @@
              --color-text-light: #666;
              --color-success: #4CAF50;
              --color-primary: #E74C3C;
+             --safe-top: env(safe-area-inset-top, 0px);
+             --safe-right: env(safe-area-inset-right, 0px);
+             --safe-bottom: env(safe-area-inset-bottom, 0px);
+             --safe-left: env(safe-area-inset-left, 0px);
+             --screen-edge-x: max(12px, calc(var(--safe-left) + 10px));
+             --screen-edge-right: max(12px, calc(var(--safe-right) + 10px));
+             --screen-edge-bottom: max(14px, calc(var(--safe-bottom) + 14px));
+             --top-safe-y: max(12px, calc(var(--safe-top) + 8px));
+             --top-control-size: clamp(48px, 10vw, 64px);
+             --top-control-gap: clamp(8px, 2vw, 12px);
+             --bottom-control-size: clamp(78px, 18vw, 96px);
          }
 
          body, html {
              width: 100%;
              height: 100%;
+             min-height: 100%;
              overflow: hidden;
              touch-action: none;
              -ms-touch-action: none;
+             overscroll-behavior: none;
+             -webkit-user-select: none;
+             user-select: none;
+             -webkit-tap-highlight-color: transparent;
              font-family: 'Fredoka', 'PingFang SC', 'Microsoft YaHei', 'Noto Sans CJK SC', sans-serif;
          }
 
          #game-world {
-             position: absolute;
-             top: 0;
-             left: 0;
+             position: fixed;
+             inset: 0;
+             width: 100%;
+             height: 100dvh;
+             min-height: 100svh;
+         }
+
+         #game-canvas {
+             position: fixed;
+             inset: 0;
              width: 100%;
              height: 100%;
+             display: block;
          }
 
          /* ============================================
@@ -59,8 +87,8 @@
       ============================================ */
          #hud {
              position: absolute;
-             top: var(--space-sm);
-             right: var(--space-sm);
+             top: var(--top-safe-y);
+             right: var(--screen-edge-right);
              left: auto;
              display: flex;
              flex-direction: column;
@@ -190,13 +218,16 @@
              right: 0;
              background: linear-gradient(135deg, rgba(44, 62, 80, 0.98), rgba(52, 73, 94, 0.98));
              border-radius: 24px 24px 0 0;
-             padding: var(--space-md) var(--space-sm) var(--space-lg);
+             padding: var(--space-md)
+                 max(var(--space-sm), calc(var(--safe-right) + var(--space-sm)))
+                 calc(var(--space-lg) + var(--safe-bottom))
+                 max(var(--space-sm), calc(var(--safe-left) + var(--space-sm)));
              box-shadow: 0 -4px 24px rgba(0, 0, 0, 0.4);
              z-index: 125;
              pointer-events: auto;
              transform: translateY(100%);
              transition: transform var(--transition-normal) var(--ease-out);
-             max-height: 70%;
+             max-height: min(78dvh, calc(100dvh - var(--safe-top) - 20px));
              overflow-y: auto;
          }
 
@@ -313,7 +344,7 @@
              overflow-x: hidden;
              padding-right: 8px;
              margin-right: -8px;
-             max-height: calc(70vh - 200px);
+             max-height: calc(78dvh - 220px - var(--safe-bottom));
          }
 
          .vault-scroll-container::-webkit-scrollbar {
@@ -514,10 +545,10 @@
 
          #vault-toggle {
              position: absolute;
-             bottom: var(--space-sm);
-             left: var(--space-sm);
-             width: 96px;
-             height: 96px;
+             bottom: var(--screen-edge-bottom);
+             left: var(--screen-edge-x);
+             width: var(--bottom-control-size);
+             height: var(--bottom-control-size);
              border-radius: 50%;
              background: linear-gradient(135deg, #2C3E50, #34495E);
              border: 3px solid #F1C40F;
@@ -546,12 +577,15 @@
              top: 0;
              left: 0;
              width: 100%;
-             height: 100%;
+             height: 100dvh;
              background: linear-gradient(135deg, rgba(44, 62, 80, 0.98), rgba(52, 73, 94, 0.98));
              z-index: 500;
              display: flex;
              flex-direction: column;
-             padding: var(--space-md);
+             padding: calc(var(--space-md) + var(--safe-top))
+                 max(var(--space-md), calc(var(--safe-right) + var(--space-md)))
+                 calc(var(--space-md) + var(--safe-bottom))
+                 max(var(--space-md), calc(var(--safe-left) + var(--space-md)));
              transform: translateY(100%);
              transition: transform var(--transition-normal) var(--ease-out);
              pointer-events: auto;
@@ -578,10 +612,10 @@
 
          #leaderboard-toggle-icon {
              position: absolute;
-             bottom: var(--space-sm);
-             left: calc(var(--space-sm) + 104px);
-             width: 96px;
-             height: 96px;
+             bottom: var(--screen-edge-bottom);
+             left: calc(var(--screen-edge-x) + var(--bottom-control-size) + 8px);
+             width: var(--bottom-control-size);
+             height: var(--bottom-control-size);
              border-radius: 50%;
              background: linear-gradient(135deg, #F1C40F, #D4AC0D);
              border: 3px solid #fff;
@@ -995,15 +1029,15 @@
              bottom: 0;
              left: 0;
              width: 100%;
-             height: 40%;
+             height: max(42%, calc(220px + var(--safe-bottom)));
              z-index: 50;
              pointer-events: auto;
          }
 
          #joystick-base {
              position: absolute;
-             width: 180px;
-             height: 180px;
+             width: clamp(136px, 30vw, 180px);
+             height: clamp(136px, 30vw, 180px);
              border-radius: 50%;
              background: radial-gradient(circle, rgba(255, 255, 255, 0.25) 0%, rgba(255, 255, 255, 0.1) 100%);
              border: 3px solid rgba(255, 255, 255, 0.4);
@@ -1011,7 +1045,7 @@
              justify-content: center;
              align-items: center;
              pointer-events: none;
-             bottom: 80px;
+             bottom: max(78px, calc(var(--safe-bottom) + 74px));
              left: 50%;
              transform: translateX(-50%);
              box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15), inset 0 0 30px rgba(255, 255, 255, 0.1);
@@ -1027,8 +1061,8 @@
          }
 
          #joystick-stick {
-             width: 75px;
-             height: 75px;
+             width: clamp(56px, 12.5vw, 75px);
+             height: clamp(56px, 12.5vw, 75px);
              border-radius: 50%;
              background: linear-gradient(145deg, rgba(255, 255, 255, 0.95), rgba(230, 230, 230, 0.9));
              box-shadow: 0 4px 12px rgba(0, 0, 0, 0.25), inset 0 2px 4px rgba(255, 255, 255, 0.8);
@@ -1103,7 +1137,7 @@
       ============================================ */
          #collection-progress {
              position: absolute;
-             bottom: 200px;
+             bottom: calc(var(--safe-bottom) + 200px);
              left: 50%;
              transform: translateX(-50%);
              width: 200px;
@@ -1260,6 +1294,133 @@
          /* Hide joystick on desktop */
          .desktop #joystick-zone {
              display: none;
+         }
+
+         @media (max-width: 520px) {
+             :root {
+                 --space-sm: 12px;
+                 --top-control-size: 50px;
+                 --top-control-gap: 8px;
+                 --bottom-control-size: 78px;
+             }
+
+             #hud {
+                 top: calc(var(--top-safe-y) + var(--top-control-size) + 8px);
+             }
+
+             #currency-display {
+                 gap: 7px;
+                 padding: 8px 14px;
+                 border-radius: 36px;
+             }
+
+             #coin-icon {
+                 width: 30px;
+                 height: 30px;
+             }
+
+             #currency-value {
+                 min-width: 58px;
+                 font-size: 28px;
+             }
+
+             #vault-toggle .toggle-icon,
+             #leaderboard-toggle-icon .toggle-icon {
+                 font-size: 24px;
+             }
+
+             #vault-toggle .toggle-label,
+             #leaderboard-toggle-icon .toggle-label {
+                 font-size: 10px;
+                 line-height: 1.1;
+             }
+
+             #tutorial-hint {
+                 bottom: calc(var(--safe-bottom) + 226px) !important;
+                 width: calc(100% - 24px) !important;
+                 max-width: none !important;
+                 padding: 14px 18px !important;
+                 border-radius: 14px !important;
+                 font-size: clamp(20px, 6vw, 26px) !important;
+                 line-height: 1.3 !important;
+             }
+
+             #vault-panel {
+                 border-radius: 20px 20px 0 0;
+                 max-height: min(82dvh, calc(100dvh - var(--safe-top) - 12px));
+             }
+
+             .vault-balance-large {
+                 font-size: 28px;
+                 padding: 14px;
+             }
+
+             .vault-upgrade-item {
+                 min-height: 72px;
+                 gap: 10px;
+             }
+
+             .vault-upgrade-name {
+                 font-size: 16px;
+             }
+
+             .vault-upgrade-desc {
+                 font-size: 12px;
+             }
+
+             .vault-upgrade-btn {
+                 min-width: 84px;
+                 min-height: 44px;
+                 padding: 10px 14px;
+             }
+         }
+
+         @media (max-height: 520px) and (orientation: landscape) {
+             :root {
+                 --top-control-size: 46px;
+                 --top-control-gap: 8px;
+                 --bottom-control-size: 68px;
+             }
+
+             #hud {
+                 top: var(--top-safe-y);
+             }
+
+             #currency-display {
+                 padding: 7px 12px;
+             }
+
+             #coin-icon {
+                 width: 28px;
+                 height: 28px;
+             }
+
+             #currency-value {
+                 font-size: 26px;
+                 min-width: 54px;
+             }
+
+             #joystick-base {
+                 width: 124px;
+                 height: 124px;
+                 bottom: max(38px, calc(var(--safe-bottom) + 34px));
+             }
+
+             #joystick-stick {
+                 width: 52px;
+                 height: 52px;
+             }
+
+             #collection-progress {
+                 bottom: calc(var(--safe-bottom) + 142px);
+             }
+
+             #tutorial-hint {
+                 bottom: calc(var(--safe-bottom) + 172px) !important;
+                 font-size: 22px !important;
+                 padding: 12px 18px !important;
+                 max-width: min(720px, calc(100% - 180px)) !important;
+             }
          }
 
          /* Edit mode styles */
@@ -1476,10 +1637,10 @@
 
          #zoom-toggle {
              position: absolute;
-             top: var(--space-sm);
-             left: var(--space-sm);
-             width: 64px;
-             height: 64px;
+             top: var(--top-safe-y);
+             left: var(--screen-edge-x);
+             width: var(--top-control-size);
+             height: var(--top-control-size);
              border-radius: 50%;
              background: var(--color-ui-bg);
              border: 2px solid #ddd;
@@ -1502,8 +1663,8 @@
          }
 
          #zoom-toggle .toggle-icon {
-             width: 34px;
-             height: 34px;
+             width: clamp(28px, 5.8vw, 34px);
+             height: clamp(28px, 5.8vw, 34px);
              line-height: 1;
              display: flex;
              align-items: center;
@@ -1514,8 +1675,8 @@
          #zoom-toggle .toggle-icon svg,
          #cam-left-btn .toggle-icon svg,
          #cam-right-btn .toggle-icon svg {
-             width: 34px;
-             height: 34px;
+             width: clamp(28px, 5.8vw, 34px);
+             height: clamp(28px, 5.8vw, 34px);
              stroke: currentColor;
              stroke-width: 2.8;
              fill: none;
@@ -1530,10 +1691,10 @@
 
          #cam-left-btn {
              position: absolute;
-             top: var(--space-sm);
-             left: calc(var(--space-sm) + 72px);
-             width: 64px;
-             height: 64px;
+             top: var(--top-safe-y);
+             left: calc(var(--screen-edge-x) + var(--top-control-size) + var(--top-control-gap));
+             width: var(--top-control-size);
+             height: var(--top-control-size);
              border-radius: 50%;
              background: var(--color-ui-bg);
              border: 2px solid #ddd;
@@ -1556,8 +1717,8 @@
          }
 
          #cam-left-btn .toggle-icon {
-             width: 34px;
-             height: 34px;
+             width: clamp(28px, 5.8vw, 34px);
+             height: clamp(28px, 5.8vw, 34px);
              line-height: 1;
              display: flex;
              align-items: center;
@@ -1571,10 +1732,10 @@
 
          #cam-right-btn {
              position: absolute;
-             top: var(--space-sm);
-             left: calc(var(--space-sm) + 144px);
-             width: 64px;
-             height: 64px;
+             top: var(--top-safe-y);
+             left: calc(var(--screen-edge-x) + var(--top-control-size) + var(--top-control-gap) + var(--top-control-size) + var(--top-control-gap));
+             width: var(--top-control-size);
+             height: var(--top-control-size);
              border-radius: 50%;
              background: var(--color-ui-bg);
              border: 2px solid #ddd;
@@ -1597,8 +1758,8 @@
          }
 
          #cam-right-btn .toggle-icon {
-             width: 34px;
-             height: 34px;
+             width: clamp(28px, 5.8vw, 34px);
+             height: clamp(28px, 5.8vw, 34px);
              line-height: 1;
              display: flex;
              align-items: center;
@@ -4610,6 +4771,23 @@ function createSelfOrderKiosks() {
       // INITIALIZATION
       // ============================================
 
+      function getViewportSize() {
+        const viewport = window.visualViewport;
+        const width = Math.max(1, Math.floor(viewport?.width || window.innerWidth || 720));
+        const height = Math.max(1, Math.floor(viewport?.height || window.innerHeight || 1280));
+        return { width, height };
+      }
+
+      function resizeRendererToViewport() {
+        if (!renderer || !camera) return;
+        const { width, height } = getViewportSize();
+        camera.aspect = width / height;
+        camera.updateProjectionMatrix();
+        renderer.setSize(width, height, false);
+        const pixelRatio = Math.min(window.devicePixelRatio || 1, performanceSettings.pixelRatioCap);
+        renderer.setPixelRatio(pixelRatio);
+      }
+
       function initThreeJS() {
         const canvas = document.getElementById('game-canvas');
 
@@ -4639,7 +4817,8 @@ function createSelfOrderKiosks() {
         scene.background = new THREE.Color(window.gameConfig.settings.skyColor);
 
         // Create camera (third-person perspective)
-        camera = new THREE.PerspectiveCamera(60, 720 / 1280, 0.1, 1000);
+        const initialViewport = getViewportSize();
+        camera = new THREE.PerspectiveCamera(60, initialViewport.width / initialViewport.height, 0.1, 1000);
         camera.position.set(0, 25, 25);
         camera.lookAt(0, 0, 0);
 
@@ -4650,9 +4829,12 @@ function createSelfOrderKiosks() {
           powerPreference: performanceSettings.enableShadows ? 'high-performance' : 'low-power',
         });
         // Disabled antialias for mobile perf
-        renderer.setSize(720, 1280);
-        const pixelRatio = Math.min(window.devicePixelRatio || 1, performanceSettings.pixelRatioCap);
-        renderer.setPixelRatio(pixelRatio);
+        resizeRendererToViewport();
+        window.addEventListener('resize', resizeRendererToViewport, { passive: true });
+        if (window.visualViewport) {
+          window.visualViewport.addEventListener('resize', resizeRendererToViewport, { passive: true });
+          window.visualViewport.addEventListener('scroll', resizeRendererToViewport, { passive: true });
+        }
         // Capped ratio for performance
         renderer.shadowMap.enabled = performanceSettings.enableShadows;
         if (performanceSettings.enableShadows) {
@@ -11039,9 +11221,12 @@ function createSelfOrderKiosks() {
         const joystickBase = document.getElementById('joystick-base');
         const joystickStick = document.getElementById('joystick-stick');
 
-        const maxRadius = 55;
-        // Max movement radius for stick
         const deadZone = 8;
+
+        function getMaxJoystickRadius() {
+          const rect = joystickBase.getBoundingClientRect();
+          return Math.max(38, Math.min(55, rect.width * 0.3));
+        }
 
         // Get joystick center position (fixed position)
         function getJoystickCenter() {
@@ -11070,6 +11255,7 @@ function createSelfOrderKiosks() {
           const dx = touch.clientX - joystickCenter.x;
           const dy = touch.clientY - joystickCenter.y;
           const distance = Math.sqrt(dx * dx + dy * dy);
+          const maxRadius = getMaxJoystickRadius();
 
           let clampedX = dx;
           let clampedY = dy;
@@ -11107,6 +11293,7 @@ function createSelfOrderKiosks() {
           const dx = touch.clientX - joystickCenter.x;
           const dy = touch.clientY - joystickCenter.y;
           const distance = Math.sqrt(dx * dx + dy * dy);
+          const maxRadius = getMaxJoystickRadius();
 
           let clampedX = dx;
           let clampedY = dy;
