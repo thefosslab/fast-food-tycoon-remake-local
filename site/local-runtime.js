@@ -1113,14 +1113,52 @@
   };
 
   window.addEventListener('load', () => {
-    if (typeof window.run === 'function') {
-      window.run('play').catch((error) => {
-        console.error('[local runtime] game failed to start', error);
-        const loading = document.getElementById('loading-screen');
-        if (loading) {
-          loading.innerHTML = '<div style="color:white;font:16px sans-serif;padding:24px">游戏启动失败，请查看浏览器控制台。</div>';
+    const launch = document.getElementById('launch-screen');
+    const startButton = document.getElementById('launch-start-btn');
+    const savedGame = readJSON(STORAGE_KEY, null);
+    let starting = false;
+
+    if (startButton && savedGame) {
+      startButton.textContent = '继续营业';
+    }
+
+    const beginGame = () => {
+      if (starting) return;
+      starting = true;
+      if (startButton) {
+        startButton.disabled = true;
+        startButton.textContent = '正在开店...';
+      }
+      if (launch) {
+        launch.classList.add('hidden');
+        setTimeout(() => {
+          launch.style.display = 'none';
+        }, 500);
+      }
+
+      if (typeof window.run === 'function') {
+        window.run('play').catch((error) => {
+          console.error('[local runtime] game failed to start', error);
+          const loading = document.getElementById('loading-screen');
+          if (loading) {
+            loading.innerHTML = '<div style="color:white;font:16px sans-serif;padding:24px">游戏启动失败，请查看浏览器控制台。</div>';
+          }
+        });
+      }
+    };
+
+    if (launch && startButton) {
+      startButton.addEventListener('click', beginGame, { once: true });
+      window.requestAnimationFrame(() => {
+        try {
+          startButton.focus({ preventScroll: true });
+        } catch {
+          startButton.focus();
         }
       });
+      return;
     }
+
+    beginGame();
   });
 })();
